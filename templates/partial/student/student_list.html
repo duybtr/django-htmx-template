@@ -15,7 +15,14 @@
                 <td>{{ student.age }}</td>
                 <td>{{ student.major }}</td>
                 <td><button class='btn'><svg class="bi bi-pencil" width="32" height="32"><use xlink:href="#pencil"></svg></button></td>
-                <td><button class='btn'><svg class="bi bi-trash3" width="32" height="32"><use xlink:href="#trash3"></svg></button></td>
+                <td><button class='btn' 
+                    hx-confirm='Are you sure?' 
+                    hx-target="closest tr" 
+                    hx-swap="outerHTML swap:1s" 
+                    hx-delete="{% url 'delete_student' student.pk %}">
+                    <svg class="bi bi-trash3" width="32" height="32">
+                        <use xlink:href="#trash3">
+                    </svg></button></td>
             </tr>
         {% endfor %}
     </tbody>

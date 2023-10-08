@@ -1,0 +1,22 @@
+<tr>
+    <td>{{ form.first_name }}
+        {{ form.first_name.errors}}
+    </td>
+    <td>{{ form.last_name }}
+        {{ form.last_name.errors }}
+    </td>
+    <td>
+        {{ form.gender }}
+        {{ form.gender.errors }}
+    </td>
+    <td>
+        {{ form.age }}
+        {{ form.age.errors }}
+    </td>
+    <td>
+        {{ form.major }}
+        {{ form.major.errors }}
+    </td>
+    <td><a href="#" hx-post="{% url 'add_student_submit' %}" hx-target="closest tr" hx-swap="outerHTML" hx-include="closest tr" class="text-secondary"><svg class="bi bi-check-lg me-2" width="32" height="32"><use xlink:href="#checkmark"/></svg></a></td>
+    <td><a href="#" hx-get="{% url 'add_student_cancel' %}" hx-target="closest tr" hx-swap="outerHTML" class="text-secondary"><svg class="bi bi-x-lg me-2" width="32" height="32"><use xlink:href="#cancel"/></svg></a></td>
+</tr>
