@@ -14,7 +14,7 @@
                 <td>{{ student.gender }}</td>
                 <td>{{ student.age }}</td>
                 <td>{{ student.major }}</td>
-                <td><button class='btn'><svg class="bi bi-pencil" width="32" height="32"><use xlink:href="#pencil"></svg></button></td>
+                <td><button class='btn' hx-get="{% url 'edit_student' student.pk %}" hx-target="closest tr" hx-swap="outerHTML"><svg class="bi bi-pencil" width="32" height="32"><use xlink:href="#pencil"></svg></button></td>
                 <td><button class='btn' 
                     hx-confirm='Are you sure?' 
                     hx-target="closest tr" 

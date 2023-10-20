@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponse
+from django.views.decorators.http import require_http_methods   
 from django import forms
 from django.forms import modelform_factory
 from .models import Student
@@ -47,10 +48,21 @@ def edit_student(request, student_pk):
         'age': student.age,
         'major': student.major
     })
-    return render(request, 'student/partial/edit_student.html', context)
+    return render(request, 'partial/student/edit_student.html', context)
 
+@require_http_methods(["GET", "POST"])
 def edit_student_submit(request, student_pk):
-    return None
+    context = {}
+    student = Student.objects.get(pk=student_pk)
+    context['student'] = student
+    if request.method == 'POST':
+        form = StudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+        else:
+            return render(request, 'partial/student/edit_student.html', context)
+    else:
+        return render(request, 'partial/student/student_row.html', context)
 def delete_student(request, student_pk):
     student = Student.objects.get(pk=student_pk)
     student.delete()
