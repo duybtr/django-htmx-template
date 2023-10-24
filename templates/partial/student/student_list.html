@@ -5,24 +5,12 @@
         <th>Gender</th>
         <th>Age</th>
         <th>Major</th>
+        <th>Profile Image</th>
     </thead>
     <tbody>
         {% for student in students %}
             <tr>
-                <td>{{ student.first_name }}</td>
-                <td>{{ student.last_name }}</td>
-                <td>{{ student.gender }}</td>
-                <td>{{ student.age }}</td>
-                <td>{{ student.major }}</td>
-                <td><button class='btn' hx-get="{% url 'edit_student' student.pk %}" hx-target="closest tr" hx-swap="outerHTML"><svg class="bi bi-pencil" width="32" height="32"><use xlink:href="#pencil"></svg></button></td>
-                <td><button class='btn' 
-                    hx-confirm='Are you sure?' 
-                    hx-target="closest tr" 
-                    hx-swap="outerHTML swap:1s" 
-                    hx-delete="{% url 'delete_student' student.pk %}">
-                    <svg class="bi bi-trash3" width="32" height="32">
-                        <use xlink:href="#trash3">
-                    </svg></button></td>
+                {% include 'partial/student/student_row.html' %}
             </tr>
         {% endfor %}
     </tbody>

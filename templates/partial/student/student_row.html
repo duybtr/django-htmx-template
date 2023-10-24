@@ -4,6 +4,7 @@
     <td>{{ student.gender }}</td>
     <td>{{ student.age }}</td>
     <td>{{ student.major }}</td>
+    <td>{{ student.profile_image }}</td>
     <td><button class='btn' 
         hx-get="{% url 'edit_student' student.pk %}" 
         hx-target="closest tr" 

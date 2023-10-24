@@ -7,7 +7,7 @@ class Student(models.Model):
     gender = models.CharField(max_length = 10)
     age = models.DecimalField(max_digits = 7, decimal_places = 0)
     major = models.CharField(max_length = 50)
-    #profile_image = models.FileField()
+    profile_image = models.FileField(null=True)
 
 # call manually
 def load_students():

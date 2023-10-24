@@ -17,6 +17,30 @@
         {{ form.major }}
         {{ form.major.errors }}
     </td>
-    <td><a href="#" hx-post="{% url 'add_student_submit' %}" hx-target="closest tr" hx-swap="outerHTML" hx-include="closest tr" class="text-secondary"><svg class="bi bi-check-lg me-2" width="32" height="32"><use xlink:href="#checkmark"/></svg></a></td>
-    <td><a href="#" hx-get="{% url 'add_student_cancel' %}" hx-target="closest tr" hx-swap="outerHTML" class="text-secondary"><svg class="bi bi-x-lg me-2" width="32" height="32"><use xlink:href="#cancel"/></svg></a></td>
+    <td>
+        {{ form.profile_image }}
+        {{ form.profile_image.errors }}
+    </td>
+    <td><a href="#" 
+            hx-post="{% url 'add_student_submit' %}" 
+            hx-target="closest tr" 
+            hx-swap="outerHTML" 
+            hx-include="closest tr"
+            hx-encoding="multipart/form-data" 
+            class="text-secondary">
+            <svg class="bi bi-check-lg me-2" width="32" height="32">
+                <use xlink:href="#checkmark"/>
+            </svg>
+        </a>
+    </td>
+    <td><a href="#" 
+            hx-get="{% url 'add_student_cancel' %}" 
+            hx-target="closest tr" 
+            hx-swap="outerHTML" 
+            class="text-secondary">
+            <svg class="bi bi-x-lg me-2" width="32" height="32">
+                <use xlink:href="#cancel"/>
+            </svg>
+        </a>
+    </td>
 </tr>

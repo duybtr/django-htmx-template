@@ -26,7 +26,7 @@ def add_student(request):
 
 def add_student_submit(request):
     context = {}
-    form = StudentForm(request.POST)
+    form = StudentForm(request.POST, request.FILES)
     context['form'] = form
     if form.is_valid():
         context['student'] = form.save()
