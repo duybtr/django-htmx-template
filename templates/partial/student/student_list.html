@@ -9,9 +9,7 @@
     </thead>
     <tbody>
         {% for student in students %}
-            <tr>
-                {% include 'partial/student/student_row.html' %}
-            </tr>
+            {% include 'partial/student/student_row.html' %}
         {% endfor %}
     </tbody>
 </table>
