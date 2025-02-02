@@ -61,8 +61,7 @@ def edit_student_submit(request, student_pk):
             form.save()
         else:
             return render(request, 'partial/student/edit_student.html', context)
-    else:
-        return render(request, 'partial/student/student_row.html', context)
+    return render(request, 'partial/student/student_row.html', context)
 def delete_student(request, student_pk):
     student = Student.objects.get(pk=student_pk)
     student.delete()

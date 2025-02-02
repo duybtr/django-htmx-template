@@ -7,7 +7,7 @@ class Student(models.Model):
     gender = models.CharField(max_length = 10)
     age = models.DecimalField(max_digits = 7, decimal_places = 0)
     major = models.CharField(max_length = 50)
-    profile_image = models.FileField(null=True)
+    profile_image = models.FileField(null=True, blank=True)
 
 # call manually
 def load_students():
@@ -22,6 +22,5 @@ def load_students():
     students.append(Student(first_name='Mary', last_name='Jay', gender='Female', age=21, major='Theater'))
     students.append(Student(first_name='Catherine', last_name='Moore', gender='Female', age=28, major='Computer Science'))
     students.append(Student(first_name='Elizabeth', last_name='Mendel', gender='Female', age=25, major='Chemistry'))
-    for student in students:
-        student.save()
-    return students
+    student_models = Student.objects.bulk_create(students)
+    return student_models
